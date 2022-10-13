@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="mac (generated)" id="1661940911860-1">
+        <createSequence sequenceName="author_id_seq"/>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-2">
+        <createSequence sequenceName="book2author_id_seq"/>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-3">
+        <createSequence sequenceName="book_id_seq"/>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-4">
+        <createSequence sequenceName="books_id_seq"/>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-5">
+        <createTable tableName="author">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" primaryKeyName="author_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="photo" type="VARCHAR(255)"/>
+            <column name="slug" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-6">
+        <createTable tableName="authors">
+            <column name="id" type="INT"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-7">
+        <createTable tableName="book">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" primaryKeyName="book_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="discount" type="VARCHAR(255)"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="is_bestseller" type="BOOL"/>
+            <column name="price" type="VARCHAR(255)"/>
+            <column name="price_old" type="VARCHAR(255)"/>
+            <column name="pub_date" type="VARCHAR(255)"/>
+            <column name="slug" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-8">
+        <createTable tableName="book2author">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" primaryKeyName="book2author_pkey"/>
+            </column>
+            <column name="sort_index" type="INT"/>
+            <column name="author_id" type="INT"/>
+            <column name="book_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-9">
+        <createTable tableName="books">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="books_pkey"/>
+            </column>
+            <column name="author" type="VARCHAR(2147483647)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(2147483647)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_old" type="VARCHAR(2147483647)"/>
+            <column name="price" type="VARCHAR(2147483647)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-10">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book2author" constraintName="fkafij5snytuqywyya5gj5r30l3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book"/>
+    </changeSet>
+    <changeSet author="mac (generated)" id="1661940911860-11">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="book2author" constraintName="fkcdamvjmc66dxs94gpco2g5yyb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author"/>
+    </changeSet>
+</databaseChangeLog>
